@@ -703,7 +703,7 @@ def create_from_images_raw(tfrecord_dir, image_dir, shuffle, res_log2=7, resize=
         error("Input images must be stored as RGB or grayscale")
     if shuffle:
         print("Shuffle the images...")
-    with TFRecordExporter(tfrecord_dir, len(image_filenames)) as tfr:
+    with TFRecordExporter(tfrecord_dir, len(image_filenames), res_log2=res_log2) as tfr:
         order = (
             tfr.choose_shuffled_order() if shuffle else np.arange(len(image_filenames))
         )
